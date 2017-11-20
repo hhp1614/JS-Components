@@ -7,7 +7,7 @@
     <title>分页</title>
 </head>
 <body>
-    <ul class="paging">
+    <ul class="paging" style="width: 150px; height: 150px; overflow: auto;">
         <li>1</li>
         <li>2</li>
         <li>3</li>
@@ -24,6 +24,14 @@
         <li>14</li>
         <li>15</li>
         <li>16</li>
+        <li>17</li>
+        <li>18</li>
+        <li>19</li>
+        <li>20</li>
+        <li>21</li>
+        <li>22</li>
+        <li>23</li>
+        <li>24</li>
     </ul>
     <div id="paging-pages"></div>
     <script>
@@ -31,32 +39,87 @@
         this.listEl = document.querySelector(options.listEl);// 获取列表容器
         this.pageEl = document.querySelector(options.pageEl);// 获取页码容器
         this.limit = options.limit;// 获取每页显示个数
-        this.listChildCount = null;
+        this.class = options.class;// 获取自定义类名
+        this.activeClass = options.activeClass;// 获取自定义选中类名
+        this.listChild = this.listEl.children;// list对象
+        this.listChildCount = this.listChild.length;// list个数
+        this.pageCount = null;// page总页数
+        this.pageCurrent = 1;// 当前页数初始值
 
-        this.getListCount();
         this.setPageCount();
-        console.dir(this);
+        this.initPage();
+        this.showPage();
+        this.pageEvent();
     };
-    // 获取列表数目并设置初始属性
-    Paging.prototype.getListCount = function () {
-        var listChild = this.listEl.children;
-        this.listChildCount = listChild.length;
-        // 初始化显示个数
-        for (let i=0; i<listChild.length; i++) {
-            if(i>=this.limit) {
-                listChild[i].style.display = 'none'
+    // 设置总页数
+    Paging.prototype.setPageCount = function () {
+        this.pageCount = Math.ceil(this.listChildCount/this.limit);
+    };
+    // 初始化page HTML结构
+    Paging.prototype.initPage = function () {
+        var pageHTML = '';
+        var style = '';
+        for (let i=1; i<=this.pageCount; i++) {
+            pageHTML += `<a href="javascript:;" class="${this.class}" data-click="index">${i}</a>`
+        }
+        var html = `<a href="javascript:;" class="${this.class}" data-click="prev">上一页</a>
+                    ${pageHTML}
+                    <a href="javascript:;" class="${this.class}" data-click="next">下一页</a>`;
+        this.pageEl.innerHTML = html;
+    };
+    // 显示对应页数及相应样式
+    Paging.prototype.showPage = function () {
+        for (let i=0; i<this.listChild.length; i++) {
+            this.listChild[i].style.display = 'none';
+            if (this.limit*(this.pageCurrent-1)<=i && this.limit*this.pageCurrent-1>=i) {
+                this.listChild[i].style.display = 'block';
+            };
+        };
+        // console.log(this.pageCurrent);
+        // console.log(this.pageEl.children[this.pageCurrent]);
+        for (let i=0; i<this.pageEl.children.length; i++) {
+            this.pageEl.children[i].style.backgroundColor = 'white';
+            if (i == this.pageCurrent) {
+                // this.pageEl.children[i].style.backgroundColor = 'red';
+                this.pageEl.children[i].style.cssText = 'background-color: red;'
             }
         }
-        console.log(this.listChildCount);
     };
-    Paging.prototype.setPageCount = function (length) {
-        console.log(this.listChildCount);
+    // 事件监听
+    Paging.prototype.pageEvent = function () {
+        var that = this;
+        this.pageEl.addEventListener('click', function (e) {
+            var e = e || window.event;
+            var targer = e.targer || e.srcElement;
+            switch (targer.getAttribute('data-click')) {
+                case 'index': index(); break;
+                case 'prev': prev(); break;
+                case 'next': next(); break;
+                default: break;
+            };
+            function index() {
+                that.pageCurrent = parseInt(targer.innerText);
+                that.showPage();
+            }
+            function prev() {
+                that.pageCurrent--;
+                if(that.pageCurrent<=1) that.pageCurrent=1;
+                that.showPage();
+            };
+            function next() {
+                that.pageCurrent++;
+                if(that.pageCurrent>=that.pageCount) that.pageCurrent=that.pageCount;
+                that.showPage();
+            };
+        });
     };
     new Paging({
         listEl: '.paging',
         pageEl: '#paging-pages',
-        limit: 5
-    })
+        limit: 5,
+        class: 'btn button',
+        activeClass: 'btn-active'
+    });
     </script>
 </body>
 </html>
