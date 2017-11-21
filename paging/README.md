@@ -14,4 +14,4 @@
 	});
 	```
 - 效果
-	![1.gif](https://i.loli.net/2017/11/21/5a13cdcb90763.gif)
+	![1.gif](https://i.loli.net/2017/11/21/5a13d43c391c1.gif)
