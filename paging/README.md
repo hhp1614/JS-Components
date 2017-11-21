@@ -13,3 +13,5 @@
 	    activeClass : 'btn-primary'             // 给页码添加active类名(需要自己定义样式，可以引用样式库)
 	});
 	```
+- 效果
+	![1.gif](https://i.loli.net/2017/11/21/5a13cdcb90763.gif)
