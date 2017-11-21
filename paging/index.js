@@ -1,7 +1,7 @@
 function Paging(options) {
     this.listEl         = document.querySelector(options.listEl);   // 获取列表容器
     this.pageEl         = document.querySelector(options.pageEl);   // 获取页码容器
-    this.limit          = options.limit;                            // 获取每页显示个数
+    this.limit          = options.limit || 10;                       // 获取每页显示个数
     this.class          = options.class;                            // 获取自定义类名
     this.activeClass    = options.activeClass;                      // 获取自定义选中类名
     this.listChild      = this.listEl.children;                     // list对象
