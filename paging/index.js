@@ -51,6 +51,22 @@ Paging.prototype.showPage = function () {
             if (i < this.pageCurrent-1 || i > this.pageCurrent+3)
                 this.pageEl.children[i].style.display = 'none';
         };
+    } else {
+        console.log(this.pageCurrent);
+        if (this.pageCurrent < 3) {
+            for (let i=0; i<this.pageEl.children.length; i++) {
+                this.pageEl.children[i].style.display = 'none';
+                if (i < 7 || i >= this.pageEl.children.length-3)
+                    this.pageEl.children[i].style.display = 'inline-block';
+            }
+        }
+        if (this.pageCurrent > this.pageCount - 2) {
+            for (let i=0; i<this.pageEl.children.length; i++) {
+                this.pageEl.children[i].style.display = 'none';
+                if (i < 2 || i >= this.pageEl.children.length-8)
+                    this.pageEl.children[i].style.display = 'inline-block';
+            }
+        }
     };
 };
 // 事件监听
