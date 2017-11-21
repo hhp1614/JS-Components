@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>分页</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body style="padding: 50px;">
     <ul class="paging" style="width: 150px; height: 150px; overflow: auto;">
         <li>1</li>
         <li>2</li>
@@ -32,94 +33,103 @@
         <li>22</li>
         <li>23</li>
         <li>24</li>
+        <li>25</li>
+        <li>26</li>
+        <li>27</li>
+        <li>28</li>
+        <li>29</li>
+        <li>30</li>
+        <li>31</li>
+        <li>32</li>
+        <li>33</li>
+        <li>34</li>
+        <li>35</li>
+        <li>36</li>
+        <li>37</li>
+        <li>38</li>
+        <li>39</li>
+        <li>40</li>
+        <li>41</li>
+        <li>42</li>
+        <li>43</li>
+        <li>44</li>
+        <li>45</li>
+        <li>46</li>
+        <li>47</li>
+        <li>48</li>
+        <li>49</li>
+        <li>50</li>
+        <li>51</li>
+        <li>52</li>
+        <li>53</li>
+        <li>54</li>
+        <li>55</li>
+        <li>56</li>
+        <li>57</li>
+        <li>58</li>
+        <li>59</li>
+        <li>60</li>
+        <li>61</li>
+        <li>62</li>
+        <li>63</li>
+        <li>64</li>
+        <li>65</li>
+        <li>66</li>
+        <li>67</li>
+        <li>68</li>
+        <li>69</li>
+        <li>70</li>
+        <li>71</li>
+        <li>72</li>
+        <li>73</li>
+        <li>74</li>
+        <li>75</li>
+        <li>76</li>
+        <li>77</li>
+        <li>78</li>
+        <li>79</li>
+        <li>80</li>
+        <li>81</li>
+        <li>82</li>
+        <li>83</li>
+        <li>84</li>
+        <li>85</li>
+        <li>86</li>
+        <li>87</li>
+        <li>88</li>
+        <li>89</li>
+        <li>90</li>
+        <li>91</li>
+        <li>92</li>
+        <li>93</li>
+        <li>94</li>
+        <li>95</li>
+        <li>96</li>
+        <li>97</li>
+        <li>98</li>
+        <li>99</li>
+        <li>100</li>
+        <li>101</li>
+        <li>102</li>
+        <li>103</li>
+        <li>104</li>
+        <li>105</li>
+        <li>106</li>
+        <li>107</li>
+        <li>108</li>
+        <li>109</li>
+        <li>110</li>
     </ul>
     <div id="paging-pages"></div>
+    <script src="./index.js"></script>
     <script>
-    function Paging(options) {
-        this.listEl = document.querySelector(options.listEl);// 获取列表容器
-        this.pageEl = document.querySelector(options.pageEl);// 获取页码容器
-        this.limit = options.limit;// 获取每页显示个数
-        this.class = options.class;// 获取自定义类名
-        this.activeClass = options.activeClass;// 获取自定义选中类名
-        this.listChild = this.listEl.children;// list对象
-        this.listChildCount = this.listChild.length;// list个数
-        this.pageCount = null;// page总页数
-        this.pageCurrent = 1;// 当前页数初始值
-
-        this.setPageCount();
-        this.initPage();
-        this.showPage();
-        this.pageEvent();
-    };
-    // 设置总页数
-    Paging.prototype.setPageCount = function () {
-        this.pageCount = Math.ceil(this.listChildCount/this.limit);
-    };
-    // 初始化page HTML结构
-    Paging.prototype.initPage = function () {
-        var pageHTML = '';
-        var style = '';
-        for (let i=1; i<=this.pageCount; i++) {
-            pageHTML += `<a href="javascript:;" class="${this.class}" data-click="index">${i}</a>`
-        }
-        var html = `<a href="javascript:;" class="${this.class}" data-click="prev">上一页</a>
-                    ${pageHTML}
-                    <a href="javascript:;" class="${this.class}" data-click="next">下一页</a>`;
-        this.pageEl.innerHTML = html;
-    };
-    // 显示对应页数及相应样式
-    Paging.prototype.showPage = function () {
-        for (let i=0; i<this.listChild.length; i++) {
-            this.listChild[i].style.display = 'none';
-            if (this.limit*(this.pageCurrent-1)<=i && this.limit*this.pageCurrent-1>=i) {
-                this.listChild[i].style.display = 'block';
-            };
-        };
-        // console.log(this.pageCurrent);
-        // console.log(this.pageEl.children[this.pageCurrent]);
-        for (let i=0; i<this.pageEl.children.length; i++) {
-            this.pageEl.children[i].style.backgroundColor = 'white';
-            if (i == this.pageCurrent) {
-                // this.pageEl.children[i].style.backgroundColor = 'red';
-                this.pageEl.children[i].style.cssText = 'background-color: red;'
-            }
-        }
-    };
-    // 事件监听
-    Paging.prototype.pageEvent = function () {
-        var that = this;
-        this.pageEl.addEventListener('click', function (e) {
-            var e = e || window.event;
-            var targer = e.targer || e.srcElement;
-            switch (targer.getAttribute('data-click')) {
-                case 'index': index(); break;
-                case 'prev': prev(); break;
-                case 'next': next(); break;
-                default: break;
-            };
-            function index() {
-                that.pageCurrent = parseInt(targer.innerText);
-                that.showPage();
-            }
-            function prev() {
-                that.pageCurrent--;
-                if(that.pageCurrent<=1) that.pageCurrent=1;
-                that.showPage();
-            };
-            function next() {
-                that.pageCurrent++;
-                if(that.pageCurrent>=that.pageCount) that.pageCurrent=that.pageCount;
-                that.showPage();
-            };
+        new Paging({
+            listEl      : '.paging',                // list 列表父级
+            pageEl      : '#paging-pages',          // page 页码父级
+            limit       : 3,                        // 每页显示数目
+            class       : 'btn btn-default btn-xs', // 给页码添加类名
+            activeClass : 'btn-primary'             // 给页码添加active类名
         });
-    };
-    new Paging({
-        listEl: '.paging',
-        pageEl: '#paging-pages',
-        limit: 5,
-        class: 'btn button',
-        activeClass: 'btn-active'
-    });
     </script>
 </body>
 </html>
