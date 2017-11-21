@@ -52,7 +52,6 @@ Paging.prototype.showPage = function () {
                 this.pageEl.children[i].style.display = 'none';
         };
     } else {
-        console.log(this.pageCurrent);
         if (this.pageCurrent < 3) {
             for (let i=0; i<this.pageEl.children.length; i++) {
                 this.pageEl.children[i].style.display = 'none';
