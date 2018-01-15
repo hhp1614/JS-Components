@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tabs</title>
+	<style>
+		html, body { height: 100%; margin: 0; }
+		body {
+			/* 水平垂直居中 */
+			display: flex;
+			justify-content: center; /* 水平居中 */
+			align-items: center; /* 垂直居中 */
+		}
+		.wrapper {
+			/* 容器 */
+			width: 500px;
+			height: 500px;
+		}
+
+		.tabs, .tabs * { box-sizing: border-box; }
+		.tabs {
+			font-size: 16px;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			border: 1px solid #eee;
+			box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+		}
+		.tabs>ol { list-style: none; margin: 0; padding: 0; }
+		/* nav */
+		.tabs>ol:first-child {
+			display: flex;
+			box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+			position: relative;
+			color: #666;
+		}
+		.tabs>ol:first-child>li {
+			flex: 1;
+			text-align: center;
+			font-size: 1.5em;
+			line-height: 2;
+			cursor: pointer;
+		}
+		.tabs>ol:first-child>i {
+			display: block;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 0;
+			height: 3px;
+			background-color: #7e57c2;
+			transition: all .3s;
+		}
+		/* panes */
+		.tabs>ol:nth-child(2) {
+			flex: 1;
+			width: 100%;
+			overflow: hidden;
+			position: relative;
+		}
+		.tabs>ol:nth-child(2)>li {
+			width: 100%;
+			height: 100%;
+			padding: 10px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			transition: all .3s;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+
+		<div class="tabs">
+			<ol data-role="tabs-nav">
+				<li>first tabs</li>
+				<li>second tabs</li>
+				<li>third tabs</li>
+				<i></i>
+			</ol>
+			<ol data-role="tabs-panes">
+				<li><h2>this is belone to first tabs</h2></li>
+				<li><h2>this is belone to second tabs</h2></li>
+				<li><h2>this is belone to third tabs</h2></li>
+			</ol>
+		</div>
+
+	</div>
+
+	<script src="../lib/tabs/index.js"></script>
+	<script>
+		// let element = document.querySelector('.tabs')
+		// new Tabs(element)
+
+		new Tabs()
+	</script>
+</body>
+</html>
