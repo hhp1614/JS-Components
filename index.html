@@ -2,10 +2,81 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 	<title>JS-Components</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		html, body { height: 100%; margin: 0; }
+		body {
+			/* 水平垂直居中 */
+			display: flex;
+			justify-content: center; /* 水平居中 */
+			align-items: center; /* 垂直居中 */
+			user-select: none; /* 禁止选中 */
+
+			font-family: '微软雅黑';
+			font-size: 16px;
+		}
+		.wrapper {
+			/* 容器 */
+			width: 500px;
+			max-width: 80%;
+			height: 500px;
+			box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+			border-radius: 2px;
+		}
+		.wrapper>.title {
+			padding: 10px;
+			background-color: #3f51b5;
+			color: #fff;
+			font-size: 1.5em;
+			font-weight: bold;
+		}
+		.wrapper>.content {
+			margin: 0;
+			padding: 0;
+			font-size: 1.3em;
+		}
+		.wrapper>.content>a {
+			padding: 0 16px;
+			display: flex;
+			align-items: center;
+			min-height: 48px;
+			text-decoration: none;
+			transition: background-color .3s cubic-bezier(.4,0,.2,1);
+			background-color: transparent;
+			color: rgba(0, 0, 0, .87);
+		}
+		.wrapper>.content>a:hover {
+			background-color: rgba(0,0,0,.08);
+		}
+		.wrapper>.content>a span:first-child {
+			flex: 1;
+		}
+		.wrapper>.content>a span:nth-child(2) {
+			flex: 1;
+			display: flex;
+			justify-content: flex-end;
+			color: #999;
+			font-size: 0.7em;
+		}
+	</style>
 </head>
 <body>
-	<h1>原生JS组件</h1>
-	<a href="./demos/tabs.html">tabs</a>
+	<div class="wrapper">
+		<div class="title">原生JS组件</div>
+		<div class="content">
+			<a href="./demos/tabs.html">
+				<span>tabs</span>
+				<span>--tab切换组件</span>
+			</a>
+			<a href="./demos/tabs.html">
+				<span>喂丸</span>
+				<span>--待续</span>
+			</a>
+		</div>
+	</div>
 </body>
 </html>
