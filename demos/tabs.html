@@ -4,22 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 	<title>tabs</title>
+	<link rel="stylesheet" href="../lib/css/base.css">
 	<style>
-		html, body { height: 100%; margin: 0; }
-		body {
-			/* 水平垂直居中 */
-			display: flex;
-			justify-content: center; /* 水平居中 */
-			align-items: center; /* 垂直居中 */
-			user-select: none; /* 禁止选中 */
-		}
-		.wrapper {
-			/* 容器 */
-			width: 500px;
-			max-width: 80%;
-			height: 500px;
-		}
-
 		.tabs, .tabs * { box-sizing: border-box; }
 		.tabs {
 			font-size: 16px;
@@ -78,7 +64,7 @@
 </head>
 <body>
 	<div class="wrapper">
-
+		<!-- start -->
 		<div class="tabs">
 			<ol data-role="tabs-nav">
 				<li class="active">first</li>
@@ -92,7 +78,7 @@
 				<li><h2>this is belone to third tabs</h2></li>
 			</ol>
 		</div>
-
+		<!-- end -->
 	</div>
 
 	<script src="../lib/tabs/index.js"></script>
