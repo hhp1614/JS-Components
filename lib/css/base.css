@@ -12,8 +12,9 @@ body {
 	font-family: '微软雅黑';
 	font-size: 16px;
 }
+
+/* 容器 */
 .wrapper {
-	/* 容器 */
 	width: 500px;
 	max-width: 80%;
 	height: 500px;
@@ -54,4 +55,43 @@ body {
 	justify-content: flex-end;
 	color: #999;
 	font-size: 0.7em;
+}
+
+/* 按钮 */
+button {
+	position: relative;
+	display: inline-block;
+	min-width: 88px;
+	height: 36px;
+	padding: 0 16px;
+	margin: 0;
+	overflow: hidden;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 36px;
+	color: inherit;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	white-space: nowrap;
+	vertical-align: middle;
+	touch-action: manipulation;
+	zoom: 1;
+	user-select: none;
+	background: 0 0;
+	border: none;
+	border-radius: 2px;
+	outline: 0;
+	transition: all .2s cubic-bezier(.4,0,.2,1),box-shadow .2s cubic-bezier(.4,0,1,1),-webkit-box-shadow .2s cubic-bezier(.4,0,1,1);
+	will-change: box-shadow;
+	-webkit-user-drag: none;
+	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+button:hover {
+	background-color: rgba(0,0,0,.1);
+}
+button:active {
+	background-color: all .2s cubic-bezier(.4,0,.2,1),box-shadow .2s cubic-bezier(.4,0,1,1),-webkit-box-shadow .2s cubic-bezier(.4,0,1,1);
 }
