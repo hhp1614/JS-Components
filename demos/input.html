@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Input</title>
+	<link rel="stylesheet" href="../lib/css/base.css">
+	<style>
+		.wrapper {padding: 20px;}
+
+		.input-field {
+			position: relative;
+			margin-top: 1rem;
+			padding: 0 .75rem;
+			line-height: 1.5;
+		}
+		.input-field input {
+			margin: 0 0 20px 0;
+			padding: 0;
+			width: 100%;
+			height: 3rem;
+			box-shadow: none;
+			box-sizing: content-box;
+			background-color: transparent;
+			border: none;
+			outline: none;
+			border-bottom: 1px solid #9e9e9e;
+			border-radius: 0;
+			font-size: 1rem;
+			line-height: normal;
+			transition: all .3s;
+		}
+		.input-field input:focus:not([readonly]) {
+			border-bottom: 1px solid #3f51b5;
+			box-shadow: 0 1px 0 0 #3f51b5;
+		}
+		.input-field input:focus:not([readonly])+label {
+			color: #3f51b5;
+		}
+		.input-field label {
+			color: #9e9e9e;
+			position: absolute;
+			top: 0;
+			left: .75rem;
+			height: 100%;
+			font-size: 1rem;
+			cursor: text;
+			transition: transform .2s ease-out, -webkit-transform .2s ease-out;
+			text-align: initial;
+			pointer-events: none;
+			transform: translateY(12px);
+		}
+		.input-field label.active {
+			transform: translateY(-14px) scale(0.8);
+			transform-origin: 0 0;
+			/*color: #3f51b5;*/
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<!-- start -->
+		<div class="input-field">
+			<input type="text" id="must_id_1" placeholder="Placeholder">
+			<label for="must_id_1">must_id_1</label>
+		</div>
+		<div class="input-field">
+			<input type="text" id="must_id_2">
+			<label for="must_id_2">must_id_2</label>
+		</div>
+		<!-- end -->
+	</div>
+
+	<script src="../lib/input/index.js"></script>
+</body>
+</html>
